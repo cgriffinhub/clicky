@@ -11,41 +11,35 @@ class App extends Component {
   state = {
     images,
     clickedImages: [],
-    points: 0,
-    gameover: ''
+    points: 0
   };
 
 
-  endGame = () => {
-    if (this.state.points < 11) {
-      console.log('you lose');
-      this.state.points = 0;
-      this.state.clickedImages = [];
-      alert('YOU LOSE! Try Again?');
-    }
-    else {
-      console.log('you win');
-      this.state.points = 0;
-      this.state.clickedImages = [];
-      alert('YOU WIN! Try Again?');
-    }
-  }
+  
 
 
   clickImage = id => {
 
 
-    if (this.state.points < 11) {
-      console.log('asdf');
+    if (this.state.points < 12) {
       if (this.state.clickedImages.includes(id)) {
-        this.endGame();
+        console.log('you lose');
+      this.state.points = 0;
+      this.state.clickedImages = [];
+      alert('YOU LOSE! Try Again?');
       }
-      else {
+      else {        
         this.state.points++;
         this.state.clickedImages.push(id);
         for (let i = 0; i < images.length; i++) {
           let j = Math.floor(Math.random() * (i + 1));
           [images[i], images[j]] = [images[j], images[i]];
+        }
+        if (this.state.points === 12) {
+          console.log('you win');
+          this.state.points = 0;
+          this.state.clickedImages = [];
+          alert('YOU WIN! Try Again?');
         }
       }
     }
