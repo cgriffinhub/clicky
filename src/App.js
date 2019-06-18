@@ -17,7 +17,7 @@ class App extends Component {
 
   
 
-
+// Click function determines correct guess or win/loss
   clickImage = id => {
 
 
@@ -44,7 +44,6 @@ class App extends Component {
       }
     }
     else {
-      console.log('54334');
       this.endGame();
     }
 
